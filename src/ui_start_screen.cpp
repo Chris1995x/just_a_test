@@ -72,19 +72,19 @@ void Start_Screen::down()
     } else {
         switch (m_highlighted_box)
         {
-        case TARGET_TEMPERATUR_BOX:
-            m_highlighted_box = TOGGLE_BUTTON;
-            break;
-        case TOGGLE_BUTTON:
-            m_highlighted_box = PROGRAM_BUTTON;
-            break;
-        case PROGRAM_BUTTON:
-            m_highlighted_box = TARGET_TEMPERATUR_BOX;
-            break;
-        default:
-            // Do nothing
-            break;
-        }
+            case TARGET_TEMPERATUR_BOX:
+                m_highlighted_box = TOGGLE_BUTTON;
+                break;
+            case TOGGLE_BUTTON:
+                m_highlighted_box = PROGRAM_BUTTON;
+                break;
+            case PROGRAM_BUTTON:
+                m_highlighted_box = TARGET_TEMPERATUR_BOX;
+                break;
+            default:
+                // Do nothing
+                break;
+        }   
     }
 }
 
@@ -95,12 +95,18 @@ void Start_Screen::left()
     } else {
         switch (m_highlighted_box)
         {
-        case PROGRAM_BUTTON:
-            m_highlighted_box = TOGGLE_BUTTON;
-            break;
-        default:
-            // Do nothing
-            break;
+            case TARGET_TEMPERATUR_BOX:
+                // Do nothing
+                break;
+            case TOGGLE_BUTTON:
+                // Do nothing
+                break;
+            case PROGRAM_BUTTON:
+                m_highlighted_box = TOGGLE_BUTTON;
+                break;
+            default:
+                // Do nothing
+                break;
         }
     }
 }
@@ -112,12 +118,18 @@ void Start_Screen::right()
     } else {
         switch (m_highlighted_box)
         {
-        case TOGGLE_BUTTON:
-            m_highlighted_box = PROGRAM_BUTTON;
-            break;
-        default:
-            // Do nothing
-            break;
+            case TARGET_TEMPERATUR_BOX:
+                // Do nothing
+                break;
+            case TOGGLE_BUTTON:
+                m_highlighted_box = PROGRAM_BUTTON;
+                break;
+            case PROGRAM_BUTTON:
+                // Do nothing
+                break;
+            default:
+                // Do nothing
+                break;
         }
     }
 }

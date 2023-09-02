@@ -12,8 +12,8 @@ Time_Box::Time_Box(
     m_time_to_draw = time_to_draw;
 
     m_current_time = new time_s();
-    m_current_time->hour = m_time_to_draw->hour;
-    m_current_time->minute = m_time_to_draw->minute;
+    m_current_time->hour = 0;
+    m_current_time->minute = 0;
     m_current_time->millisecond = 0;
 
     m_selected_digit = 0; // Einser, Zehner, Hunderter, Tausender

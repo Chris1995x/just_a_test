@@ -26,6 +26,9 @@ class Create_Program_Screen : public Screen {
             void right();
             void select();
             void back();
+        
+        private:
+            void resetTimeAndTemperature();
 
     private:
         enum Available_Boxes {
@@ -38,6 +41,8 @@ class Create_Program_Screen : public Screen {
         U8G2_ST7920_128X64_F_SW_SPI* m_u8g2;
         System_State* m_system_state;
         Screen_Manager* m_screen_manager;
+        time_s* m_configured_time;
+        int16_t m_configured_temperatur;
         Temperatur_Box* m_target_temperatur_box;
         Time_Box* m_time_interval_box;
         Mode_Box* m_mode_box;
