@@ -13,5 +13,5 @@ void State_Box::drawScreenToBuffer(bool current_state)
 {
     std::string state_text = current_state ? "Heating" : "Cooling";
     std::string text_to_print = state_text + m_text;
-    m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW0, m_width, 2, 2, text_to_print.c_str());
+    m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW0, m_width, 1, 1, text_to_print.c_str());
 }

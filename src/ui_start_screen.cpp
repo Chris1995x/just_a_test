@@ -1,7 +1,6 @@
 #include "ui_start_screen.h"
 
-Start_Screen::Start_Screen(U8G2_ST7920_128X64_F_SW_SPI* display, System_State* system_state, Screen_Manager* screen_manager)
-{
+Start_Screen::Start_Screen(U8G2_ST7920_128X64_F_SW_SPI* display, System_State* system_state, Screen_Manager* screen_manager) {
     m_u8g2 = display;
     m_system_state = system_state;
     m_screen_manager = screen_manager;
