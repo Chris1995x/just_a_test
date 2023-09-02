@@ -1,8 +1,8 @@
 #include "ui_temperatur_box.h"
 
 Temperatur_Box::Temperatur_Box(
-    U8G2_ST7920_128X64_F_SW_SPI *display, 
-    int16_t* temperatur_to_draw, 
+    U8G2_ST7920_128X64_F_SW_SPI* display, 
+    int16_t temperatur_to_draw, 
     std::string text,
     uint8_t x,
     uint8_t y,
@@ -10,7 +10,7 @@ Temperatur_Box::Temperatur_Box(
 {
     m_u8g2 = display;
     m_temperatur_to_draw = temperatur_to_draw;
-    m_current_temperatur = *temperatur_to_draw;
+    m_current_temperatur = temperatur_to_draw;
     m_selected_digit = 0; // Einser, Zehner, Hunderter, Tausender
     m_selected = false;
     m_text = text;
@@ -24,11 +24,14 @@ void Temperatur_Box::select_box()
     m_selected = true;
 }
 
-void Temperatur_Box::drawScreenToBuffer()
+void Temperatur_Box::drawScreenToBuffer(int16_t temperatur_to_draw)
 {
     // If not selected -> update temperatur with the provided temperature
     if(!m_selected) {
-        m_current_temperatur = *m_temperatur_to_draw;
+        m_current_temperatur = m_temperatur_to_draw;
+    }
+    else {
+        m_current_temperatur = temperatur_to_draw;
     }
 
     std::string text_to_print;
