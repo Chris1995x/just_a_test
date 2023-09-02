@@ -9,6 +9,7 @@
 #include "ui_screen.h"
 #include "ui_temperatur_box.h"
 #include "ui_state_box.h"
+#include "ui_button_box.h"
 
 #define SELECTABLE_BOXES 3
 
@@ -27,13 +28,10 @@ class Start_Screen : public Screen {
         void right();
         void select();
         void back();
-    
-    private:
-        void drawToggleButton();
-        void drawProgramButton();
 
     private:        
         enum Available_Boxes {
+            NONE_SELECTED,
             TARGET_TEMPERATUR_BOX,
             TOGGLE_BUTTON,
             PROGRAM_BUTTON
@@ -44,7 +42,10 @@ class Start_Screen : public Screen {
         Temperatur_Box* m_target_temperatur_box;
         Temperatur_Box* m_current_temperatur_box;
         State_Box* m_state_box;
+        Button_Box* m_toggle_button;
+        Button_Box* m_program_button;
         Available_Boxes m_highlighted_box;
+        Available_Boxes m_selected_box;
 };
 
 #endif

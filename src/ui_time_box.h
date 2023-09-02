@@ -14,7 +14,7 @@ class Time_Box {
 
     public:   
         void select_box();
-        void drawScreenToBuffer();
+        void drawScreenToBuffer(bool highlight);
         void up();
         void down();
         void left();

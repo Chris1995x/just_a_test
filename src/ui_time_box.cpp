@@ -34,7 +34,7 @@ void Time_Box::select_box()
     m_selected = true;
 }
 
-void Time_Box::drawScreenToBuffer()
+void Time_Box::drawScreenToBuffer(bool highlight)
 {
     // If not selected -> update time with the provided time
     if(!m_selected) {
@@ -50,10 +50,13 @@ void Time_Box::drawScreenToBuffer()
 
     // Print the time with or without box
     if(m_selected) {
-        m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW1, m_width, 2, 2, text_to_print.c_str());
+        m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW2, m_width, 1, 1, text_to_print.c_str());
+    }
+    else if(highlight) {
+        m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW1, m_width, 1, 1, text_to_print.c_str());
     }
     else {
-        m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW0, m_width, 2, 2, text_to_print.c_str());
+        m_u8g2->drawButtonUTF8(m_x, m_y, U8G2_BTN_BW0, m_width, 1, 1, text_to_print.c_str());
     }
 }
 

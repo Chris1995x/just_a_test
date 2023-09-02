@@ -13,7 +13,7 @@ class Temperatur_Box {
 
     public:
         void select_box();
-        void drawScreenToBuffer(int16_t temperatur_to_draw);
+        void drawScreenToBuffer(int16_t temperatur_to_draw, bool highlight);
         void up();
         void down();
         void left();
