@@ -4,6 +4,7 @@
 #include <U8g2lib.h>
 
 #include "system_state.h"
+#include "button_controller.h"
 #include "temperatur_controller.h"
 #include "ui.h"
 
@@ -16,6 +17,12 @@
 
 #define DISPLAY_REFRESH_INTERVAL_MS 1000 / 30    // 30 Hz ~ca. 33 ms
 #define CONTROLLER_REFRESH_INTERVAL_MS 1000 * 60 // 1 min.
+
+#define POWER_OUTPUT_PIN_1 4
+#define POWER_OUTPUT_PIN_2 5
+#define INPUT_PIN_1 2
+#define INPUT_PIN_2 3
+#define INPUT_PIN_3 6
 
 /*
   U8g2lib Example Overview:
@@ -30,6 +37,7 @@ U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13 /* A4 */ , /* data=*/ 1
 
 
 System_State system_state;
+Button_Controller button_controller(&system_state, POWER_OUTPUT_PIN_1, POWER_OUTPUT_PIN_2, INPUT_PIN_1, INPUT_PIN_2, INPUT_PIN_3);
 Temperatur_Controller temp_controller(&system_state);
 UI ui(&u8g2, &system_state);
 
@@ -51,6 +59,8 @@ void setup(void) {
 
 void loop(void) {
 
+  button_controller.test_for_button_press();
+
   // The state is not updated as often as the display is refreshed.
   if(current_ms > CONTROLLER_REFRESH_INTERVAL_MS)
   {
@@ -58,7 +68,7 @@ void loop(void) {
     current_ms -= CONTROLLER_REFRESH_INTERVAL_MS;
   }
   
-  ui.drawUI();
+  ui.tick();
 
   // deley between each page
   delay(DISPLAY_REFRESH_INTERVAL_MS);

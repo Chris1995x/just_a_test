@@ -37,9 +37,38 @@ void UI::initialize() {
   m_u8g2->begin();
 }
 
-void UI::drawUI() {
+void UI::tick() {
   
   m_u8g2->clearBuffer();
+
+  // Manage user input
+  Available_Buttons button = m_system_state->get_pressed_button();
+  if(button != BUTTON_NONE) {
+    switch (button)
+    {
+    case BUTTON_UP:
+      m_screen_manager->getCurrentScreen()->up();
+      break;
+    case BUTTON_DOWN:
+      m_screen_manager->getCurrentScreen()->down();
+      break;
+    case BUTTON_LEFT: 
+      m_screen_manager->getCurrentScreen()->left();
+      break;
+    case BUTTON_RIGHT:
+      m_screen_manager->getCurrentScreen()->right();
+      break;
+    case BUTTON_SELECT:
+      m_screen_manager->getCurrentScreen()->select();
+      break;
+    case BUTTON_BACK:
+      m_screen_manager->getCurrentScreen()->back();
+      break;
+    
+    default:
+      break;
+    }
+  }
 
   m_screen_manager->drawCurrentScreen();
 

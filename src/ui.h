@@ -18,7 +18,7 @@ class UI {
 
   public:
     void initialize();
-    void drawUI();    
+    void tick();    
 
   private:
     U8G2_ST7920_128X64_F_SW_SPI* m_u8g2;
