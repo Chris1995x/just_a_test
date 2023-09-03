@@ -103,8 +103,7 @@ void Running_Program_Screen::select()
             break;
         default:
             break;
-    }
-    
+    } 
 }
 
 void Running_Program_Screen::back()

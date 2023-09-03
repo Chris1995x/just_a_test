@@ -144,8 +144,18 @@ void Start_Screen::select()
         {
             case TOGGLE_BUTTON:
             {
-                bool old_state = m_system_state->get_oven_state();
-                m_system_state->set_oven_state(!old_state);
+                switch(m_system_state->get_oven_state())
+                {
+                    case OVEN_OFF:
+                        m_system_state->set_oven_state(OVEN_ON);
+                        break;
+                    case OVEN_ON:
+                       m_system_state->set_oven_state(OVEN_OFF);
+                        break;
+                    default:
+                        m_system_state->set_oven_state(OVEN_ERROR);
+                        break;
+                }
             } break;
             case PROGRAM_BUTTON:
             {

@@ -3,12 +3,14 @@
 
 #include <U8g2lib.h>
 
+#include "system_state.h"
+
 class State_Box {
     public:
         State_Box(U8G2_ST7920_128X64_F_SW_SPI* display, uint8_t x, uint8_t y, uint8_t width);
 
     public:
-        void drawScreenToBuffer(bool current_state);
+        void drawScreenToBuffer(Oven_State current_state);
 
     private:
         std::string m_text;
