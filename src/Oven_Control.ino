@@ -24,6 +24,11 @@
 #define INPUT_PIN_2 3
 #define INPUT_PIN_3 6
 
+#define TEMPERATUR_SENSOR_CS_PIN 7
+#define TEMPERATUR_SENSOR_CLK_PIN 8
+#define TEMPERATUR_SENSOR_DATA_PIN 9
+#define RELAY_PIN 10
+
 /*
   U8g2lib Example Overview:
     Frame Buffer Examples: clearBuffer/sendBuffer. Fast, but may not work with all Arduino boards because of RAM consumption
@@ -38,7 +43,7 @@ U8G2_ST7920_128X64_F_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13 /* A4 */ , /* data=*/ 1
 
 System_State system_state;
 Button_Controller button_controller(&system_state, POWER_OUTPUT_PIN_1, POWER_OUTPUT_PIN_2, INPUT_PIN_1, INPUT_PIN_2, INPUT_PIN_3);
-Temperatur_Controller temp_controller(&system_state);
+Temperatur_Controller temp_controller(&system_state, TEMPERATUR_SENSOR_CS_PIN, TEMPERATUR_SENSOR_CLK_PIN, TEMPERATUR_SENSOR_DATA_PIN, RELAY_PIN);
 UI ui(&u8g2, &system_state);
 
 uint16_t current_ms;
