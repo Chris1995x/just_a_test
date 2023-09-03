@@ -7,8 +7,7 @@
 
 System_State::System_State()
 {
-    m_oven_state = false;
-    m_override_temp_controller = false;
+    m_oven_state = OVEN_OFF;
 
     m_last_pressed_button = BUTTON_NONE;
     m_current_pressed_button = BUTTON_NONE;
@@ -38,25 +37,17 @@ System_State::~System_State()
 /****************************************************\
  * Methods to start, stopp and lock the oven 
 \****************************************************/
-bool System_State::get_oven_state(void) const
+Oven_State System_State::get_oven_state(void) const
 {
     return m_oven_state;
 }
 
-bool System_State::get_override_temp_controller(void) const
-{
-    return m_override_temp_controller;
-}
-
-void System_State::set_oven_state(bool oven_state)
+void System_State::set_oven_state(Oven_State oven_state)
 {
     m_oven_state = oven_state;
 }
 
-void System_State::set_override_temp_controller(bool override_temp_controller)
-{
-    m_override_temp_controller = override_temp_controller;
-}
+
 
 /****************************************************\
  * Methods to handle the user input

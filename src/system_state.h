@@ -20,6 +20,13 @@ enum Available_Buttons {
     BUTTON_BACK
 };
 
+enum Oven_State {
+    OVEN_OFF,
+    OVEN_ON,
+    OVEN_HOLD,
+    OVEN_ERROR
+};
+
 enum Program_Point_Type {
     HOLD_TEMPERATUR,
     RAMP_TEMPERATUR,
@@ -45,10 +52,8 @@ public:
     System_State();
     ~System_State();
 
-    bool get_oven_state(void) const;
-    bool get_override_temp_controller(void) const;
-    void set_oven_state(bool oven_state);
-    void set_override_temp_controller(bool override_temp_controller);
+    Oven_State get_oven_state(void) const;
+    void set_oven_state(Oven_State oven_state);
 
     void set_pressed_button(Available_Buttons button);
     Available_Buttons get_pressed_button(void);
@@ -69,8 +74,7 @@ public:
     
 
 private:
-    bool m_oven_state;
-    bool m_override_temp_controller;
+    Oven_State m_oven_state;
     Available_Buttons m_current_pressed_button;
     Available_Buttons m_last_pressed_button;
     int16_t m_current_temperature;

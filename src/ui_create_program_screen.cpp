@@ -42,7 +42,7 @@ void Create_Program_Screen::drawScreenToBuffer()
 {
     m_target_temperatur_box->drawScreenToBuffer(m_configured_temperatur, m_highlighted_box == TARGET_TEMPERATUR_BOX);
     m_time_interval_box->drawScreenToBuffer(m_highlighted_box == TIME_INTERVAL_BOX);
-    m_mode_box->drawScreenToBuffer(m_system_state->get_current_program_type());
+    m_mode_box->drawScreenToBuffer(HOLD_TEMPERATUR);
     m_next_button->drawButtonToBuffer(m_highlighted_box == NEXT_BUTTON);
     m_start_button->drawButtonToBuffer(m_highlighted_box == START_BUTTON);
 }
